@@ -1,6 +1,6 @@
 
-# Create our image based on Python 3.8
-FROM python:3.8
+# Create our image based on Python 3.7
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.7
 
 # Expose ports
 EXPOSE 5000
