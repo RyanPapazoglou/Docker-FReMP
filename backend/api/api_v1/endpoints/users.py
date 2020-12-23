@@ -4,14 +4,14 @@ from models import User
 
 router = APIRouter()
 
-@router.get('/users')
+@router.get('/list')
 async def list_users():
     users = []
     for user in db.users.find():
         users.append(User(**user))
     return {'users': users}
 
-@router.post('/users')
+@router.post('/create')
 async def create_user(user: User):
     if hasattr(user, 'id'):
         delattr(user, 'id')

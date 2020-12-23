@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, EmailStr
 from bson import ObjectId
 from typing import Optional
 
@@ -22,9 +22,9 @@ class PyObjectId(ObjectId):
 
 class User(BaseModel):
     id: Optional[PyObjectId] = Field(alias='_id')
-    name: str
-    username: str
-    email: str
+    name: str = Field(...)
+    username: str = Field(...)
+    email: EmailStr = Field(...)
 
     class Config:
         arbitrary_types_allowed = True

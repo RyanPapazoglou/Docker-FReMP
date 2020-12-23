@@ -1,4 +1,6 @@
 fastapi
+pydantic[email]
 uvicorn
 pymongo
 mypy
+dnspython
