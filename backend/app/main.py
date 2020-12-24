@@ -1,6 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from api.api_v1.api import api_router
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from jose import JWTError, jwt
+from passlib.context import CryptContext
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 origins = [
     "http://localhost",

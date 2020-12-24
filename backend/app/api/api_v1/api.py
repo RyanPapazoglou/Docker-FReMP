@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 
-from api.api_v1.endpoints import users, picks, games
+from app.api.api_v1.endpoints import users
+from app.api.api_v1.endpoints import games, picks
 
 api_router = APIRouter()
 api_router.include_router(users.router, prefix="/users", tags=["users"])

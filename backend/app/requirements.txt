@@ -1,0 +1,9 @@
+fastapi
+pydantic[email]
+uvicorn
+pymongo
+mypy
+dnspython
+python-multipart
+python-jose[cryptography]
+passlib[bcrypt]
