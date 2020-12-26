@@ -12,7 +12,7 @@ from app.core.config import settings
 router = APIRouter()
 
 
-@router.post("/login/access-token", response_model=schemas.Token)
+@router.post("/access-token", response_model=schemas.Token)
 def login_access_token(
         form_data: OAuth2PasswordRequestForm = Depends()
 ) -> Any:
@@ -29,13 +29,13 @@ def login_access_token(
     access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
     return {
         "access_token": security.create_access_token(
-            user.id, expires_delta=access_token_expires
+            user['_id'], expires_delta=access_token_expires
         ),
         "token_type": "bearer",
     }
 
 
-@router.post("/login/test-token", response_model=schemas.User)
+@router.post("/test-token", response_model=schemas.User)
 def test_token(current_user: models.Users = Depends(deps.get_current_user)) -> Any:
     """
     Test access token

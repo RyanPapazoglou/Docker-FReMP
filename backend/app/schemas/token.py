@@ -2,6 +2,8 @@ from typing import Optional
 
 from pydantic import BaseModel
 
+from app.models.util.PyObjectId import PyObjectId
+
 
 class Token(BaseModel):
     access_token: str
@@ -9,4 +11,4 @@ class Token(BaseModel):
 
 
 class TokenPayload(BaseModel):
-    sub: Optional[int] = None
+    sub: Optional[PyObjectId] = None
