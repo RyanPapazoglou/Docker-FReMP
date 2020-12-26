@@ -1,7 +1,7 @@
 from typing import Optional
 
-from pydantic import BaseModel, EmailStr
-
+import pydantic
+from pydantic import BaseModel, EmailStr, Field
 
 # Shared properties
 from app.models.util.PyObjectId import PyObjectId
@@ -29,6 +29,15 @@ class UserUpdate(UserBase):
 
 class User(UserBase):
     id: Optional[PyObjectId] = None
+
+    @pydantic.root_validator(pre=True)
+    def _set_id(cls, data):
+        """Swap the field _id to id (this could be done with field alias, by setting the field as "_id"
+        and the alias as "person_id", but can be quite confusing)"""
+        document_id = data.get("_id")
+        if document_id:
+            data["id"] = document_id
+        return data
 
     class Config:
         arbitrary_types_allowed = True

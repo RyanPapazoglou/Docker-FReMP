@@ -4,9 +4,9 @@ from jose import jwt
 from pydantic import ValidationError
 
 from app import schemas, dao, models
-from app.models import Users
 from app.core import security
 from app.core.config import settings
+from app.schemas import User
 
 reusable_oauth2 = OAuth2PasswordBearer(
     tokenUrl=f"{settings.API_V1_STR}/auth/access-token"
@@ -15,7 +15,7 @@ reusable_oauth2 = OAuth2PasswordBearer(
 
 def get_current_user(
     token: str = Depends(reusable_oauth2)
-) -> Users:
+) -> User:
     try:
         payload = jwt.decode(
             token, settings.SECRET_KEY, algorithms=[security.ALGORITHM]

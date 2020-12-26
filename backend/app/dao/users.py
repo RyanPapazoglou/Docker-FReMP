@@ -22,7 +22,7 @@ class UsersDao():
             return None
         return user
 
-    def get_user_by_id(self, id: Optional[PyObjectId]) -> Optional[Users]:
+    def get_user_by_id(self, id: Optional[PyObjectId]) -> Dict:
         user = db.users.find_one({"_id": id})
         if not user:
             return None
