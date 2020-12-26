@@ -2,12 +2,9 @@ from datetime import datetime
 from uuid import UUID
 from pydantic import BaseModel, Field
 from bson import ObjectId
-from typing import Optional
-from app.models.util.PyObjectId import PyObjectId
 
 
 class Games(BaseModel):
-    id: Optional[PyObjectId] = Field(alias='_id')
     game: UUID = Field(...)
     favorite: str = Field(...)
     underdog: str = Field(...)

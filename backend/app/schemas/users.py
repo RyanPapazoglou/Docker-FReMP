@@ -1,7 +1,7 @@
 from typing import Optional
 
 import pydantic
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, EmailStr
 
 # Shared properties
 from app.models.util.PyObjectId import PyObjectId

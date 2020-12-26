@@ -27,6 +27,7 @@ def login_access_token(
     elif not dao.user.is_active(user):
         raise HTTPException(status_code=400, detail="Inactive user")
     access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
+    print('token user', user)
     return {
         "access_token": security.create_access_token(
             user['_id'], expires_delta=access_token_expires
